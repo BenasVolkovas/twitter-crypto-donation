@@ -1,21 +1,26 @@
-<!--
-User 1
-User logins with twitter account.
-User logins with metamask account.
-After metamask gets the wallet address, store twitter and wallet address in filecoin.
+## Next.js App functionality:
 
-User 2
-Open twitter profile.
-Check if metamask is installed.
-If user data found in filecoin {
-    Modify DOM and add button near the profile follow.
-    If button is clicked {
-        Open the popup (not where extensions open, but near the donate button)
-        Display availability to donate money for the twitter user.
-        Option 1 donate the wanted amount in USD (use chainlink price feed)
-        Option 2 subscribe to the user and donate the wanted amount in wanted time period
+-   [ ] Twitter login
+-   [ ] Twitter logout
+-   [ ] Metamask login
+-   [ ] Store Twitter user and Metamask wallet in database
+-   [ ] Allow creator to withdraw the money from the smart contract
 
-        After confirming transaction (use moralis events), show the success message.
-    }
-}
--->
+## Chrome Extension functionality:
+
+-   [ ] Add **Donate** button to Twitter DOM
+-   [ ] On button click display 2 options to donate once or make subscription.
+-   [ ] After user chooses the method, display the form.
+-   [ ] Send the data to the smart contract
+
+## Smart contract functionality:
+
+-   [ ] Donate once
+-   [ ] Add subscription
+-   [ ] Creator should be able to withdraw money
+
+## Tool usage:
+
+-   [ ] Moralis events
+-   [ ] Filecoin storage
+-   [ ] Chainlink price feeds

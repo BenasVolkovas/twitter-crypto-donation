@@ -30,11 +30,11 @@
 }
 
 .brand {
-    background: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
     background-clip: text;
     display: inline-block;
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
 }

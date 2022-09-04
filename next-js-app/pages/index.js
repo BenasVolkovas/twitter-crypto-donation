@@ -1,7 +1,19 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
+import { signIn, useSession } from "next-auth/react";
 import styles from "../styles/Login.module.css";
 
 export default function Login() {
+    const router = useRouter();
+    const { data } = useSession();
+
+    useEffect(() => {
+        if (data) {
+            router.push("/profile");
+        }
+    }, [data]);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -12,16 +24,21 @@ export default function Login() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
-            <main className={styles.main}>
+            <div className={styles.main}>
                 <h1 className={styles.title}>
                     Welcome to <span className={styles.brand}>Twipt</span>
                 </h1>
 
                 <p className={styles.description}>
-                    Donate crypto for creators on twitter at ease!
+                    Donate crypto for creators on Twitter at ease!
                 </p>
-            </main>
+
+                {!data && (
+                    <button onClick={() => signIn()}>
+                        Sign in with Twitter
+                    </button>
+                )}
+            </div>
         </div>
     );
 }

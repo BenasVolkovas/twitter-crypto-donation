@@ -1,0 +1,29 @@
+.container {
+    padding: 5rem;
+}
+
+.logout {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 2rem;
+}
+
+.brand {
+    background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+    background-clip: text;
+    display: inline-block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.done_task {
+    background: #2af598;
+}
+
+.todo_task {
+    background: #08aeea;
+}
