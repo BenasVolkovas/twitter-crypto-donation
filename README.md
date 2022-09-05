@@ -1,8 +1,8 @@
 ## Next.js App functionality:
 
--   [ ] Twitter login
--   [ ] Twitter logout
--   [ ] Metamask login
+-   [x] Twitter login
+-   [x] Twitter logout
+-   [x] Metamask login
 -   [ ] Store Twitter user and Metamask wallet in database
 -   [ ] Allow creator to withdraw the money from the smart contract
 
@@ -21,6 +21,5 @@
 
 ## Tool usage:
 
--   [ ] Moralis events
 -   [ ] Filecoin storage
 -   [ ] Chainlink price feeds

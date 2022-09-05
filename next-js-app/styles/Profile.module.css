@@ -21,9 +21,14 @@
 }
 
 .done_task {
-    background: #2af598;
-}
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #2af598;}
 
 .todo_task {
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
     background: #08aeea;
 }
