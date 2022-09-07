@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import {useEffect} from "react";
+import {useRouter} from "next/router";
 import Head from "next/head";
-import { signIn, useSession } from "next-auth/react";
+import {signIn, useSession} from "next-auth/react";
 import styles from "../styles/Login.module.css";
 
-export default function Login() {
+const Login = () => {
     const router = useRouter();
-    const { data } = useSession();
+    const {data} = useSession();
 
     useEffect(() => {
         if (data) {
@@ -18,10 +18,7 @@ export default function Login() {
         <div className={styles.container}>
             <Head>
                 <title>Twipt</title>
-                <meta
-                    name="description"
-                    content="Twitter Crypto Donation App"
-                />
+                <meta name="description" content="Twitter Crypto Donation App" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={styles.main}>
@@ -33,12 +30,10 @@ export default function Login() {
                     Donate crypto for creators on Twitter at ease!
                 </p>
 
-                {!data && (
-                    <button onClick={() => signIn()}>
-                        Sign in with Twitter
-                    </button>
-                )}
+                {!data && <button onClick={() => signIn()}>Sign in with Twitter</button>}
             </div>
         </div>
     );
-}
+};
+
+export default Login;
