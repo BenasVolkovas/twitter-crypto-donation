@@ -1,34 +1,53 @@
 .container {
-    padding: 5rem;
+  padding: 5rem;
 }
 
 .logout {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 5rem;
-    height: 2rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  font-size: small;
+  cursor: pointer;
 }
 
 .brand {
-    background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
-    background-clip: text;
-    display: inline-block;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
+  background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+  background-clip: text;
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.info {
+  text-decoration: underline;
+  text-decoration-color: #08aeea;
 }
 
 .done_task {
-    border-radius: 1rem;
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: #2af598;}
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: #2af598;
+}
 
 .todo_task {
-    border-radius: 1rem;
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: #08aeea;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: #08aeea;
+}
+
+.save_button {
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+  font-size: medium;
+  cursor: pointer;
 }

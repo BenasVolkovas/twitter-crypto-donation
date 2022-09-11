@@ -13,10 +13,13 @@
         "@thirdweb-dev/react": "^2.9.6",
         "@thirdweb-dev/sdk": "^2.4.8",
         "ethers": "^5.7.0",
+        "moralis-v1": "^1.11.0",
         "next": "12.2.5",
         "next-auth": "^4.10.3",
         "react": "18.2.0",
-        "react-dom": "18.2.0"
+        "react-dom": "18.2.0",
+        "react-moralis": "^1.4.2",
+        "twitter-api-v2": "^1.12.5"
     },
     "devDependencies": {
         "eslint": "8.23.0",

@@ -1,16 +1,15 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
-import {signOut, useSession} from "next-auth/react";
+import {signOut, useSession, getSession} from "next-auth/react";
 import {useAddress, ConnectWallet, Web3Button} from "@thirdweb-dev/react";
 import {connect} from "@tableland/sdk";
 import styles from "../styles/Profile.module.css";
-import {getContractPublisherAddress} from "@thirdweb-dev/sdk";
+import {useNewMoralisObject} from "react-moralis";
 
-const Profile = () => {
-    const contractAddress = "0x4F13FC32C582C1C7eDa2863Fbc996405FAcB45c4";
-    const [tableland, setTableland] = useState();
-    const [tableName, setTableName] = useState();
+const Profile = (props) => {
+    const [twitterUsername, setTwitterUsername] = useState("");
+    const {save} = useNewMoralisObject("TwitterUsers");
     const router = useRouter();
     const {data} = useSession();
     const address = useAddress();
@@ -18,47 +17,42 @@ const Profile = () => {
     useEffect(() => {
         if (!data) {
             router.push("/");
+        } else if (data?.user?.id) {
+            fetch("api/twitter-user", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "PUT",
+                body: JSON.stringify({twitterId: data.user.id}),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    setTwitterUsername(data.username);
+                });
         }
     }, [data]);
 
-    const connectTableland = async () => {
-        const tablelandConnection = await connect({network: "testnet", chain: "polygon-mumbai"});
-        await tablelandConnection.siwe();
+    const saveUserObject = async () => {
+        if (twitterUsername && address) {
+            const dataToSave = {
+                twitterUsername: twitterUsername,
+                metamaskWallet: address,
+            };
 
-        setTableland(tablelandConnection);
-    };
-
-    const createTable = async () => {
-        const {name} = await tableland.create(
-            `username text, wallet text, primary key (username)`,
-            `username_wallet`
-        );
-        console.log(name);
-        setTableName(name);
-    };
-
-    const getTables = async () => {
-        const tables = await tableland.list();
-        console.log(tables);
-    };
-
-    const putWalletToTableland = async () => {
-        const key = data.user.name;
-        const value = address;
-        console.log(key, " => ", value);
-        if (key && value) {
-            const response = await tableland.write(
-                `INSERT INTO ${tableName} VALUES (${key}, '${value}');`
-            );
-            console.log(response);
+            save(dataToSave, {
+                onSuccess: (monster) => {
+                    // Execute any logic that should take place after the object is saved.
+                    alert("New object created with objectId: " + monster.id);
+                },
+                onError: (error) => {
+                    // Execute any logic that should take place if the save fails.
+                    // error is a Moralis.Error with an error code and message.
+                    alert("Failed to create new object, with error code: " + error.message);
+                },
+            });
+        } else {
+            alert("Twitter username or Metamask wallet is not added.");
         }
-    };
-
-    const getUsernameFromTableland = async () => {
-        const key = data.user.name;
-        const value = await tableland.read(`SELECT * FROM ${tableName} WHERE username = ${key}`);
-        const response = await tableland.rows[0];
-        console.log(response);
     };
 
     return (
@@ -78,28 +72,54 @@ const Profile = () => {
                     <h1>
                         Welcome, <span className={styles.brand}>{data.user.name}</span>
                     </h1>
-                    <h2>Logged in as {data.user.email}</h2>
+                    <br />
 
+                    <h2>Steps to complete:</h2>
                     <br />
-                    <h1>Steps to complete:</h1>
-                    <br />
+
                     <div>
-                        <div className={styles.done_task}>Done</div> Add Tiwitter account
+                        <div className={styles.done_task}>Done</div> Add Tiwitter account |{" "}
+                        <span className={styles.info}>@{twitterUsername}</span>
                     </div>
                     <br />
+
                     <div>
-                        <div className={styles.todo_task}>To Do</div> Add Metamask wallet{" "}
-                        <ConnectWallet />
+                        {address ? (
+                            <div className={styles.done_task}>Done</div>
+                        ) : (
+                            <div className={styles.todo_task}>To Do</div>
+                        )}{" "}
+                        Add Metamask wallet{" "}
+                        {address && (
+                            <>
+                                | <span className={styles.info}>{address}</span>
+                            </>
+                        )}
                     </div>
-                    <button onClick={() => connectTableland()}>Tableland</button>
-                    <button onClick={() => createTable()}>Create table</button>
-                    <button onClick={() => getTables()}>Get tables</button>
-                    <button onClick={() => putWalletToTableland()}>Put wallet</button>
-                    <button onClick={() => getUsernameFromTableland()}>Get username</button>
+                    <br />
+
+                    {!address && <ConnectWallet />}
+                    {twitterUsername && address ? (
+                        <button onClick={() => saveUserObject()} className={styles.save_button}>
+                            Save user to Moralis DB
+                        </button>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             )}
         </div>
     );
+};
+
+export const getServerSideProps = async () => {
+    const twiptContract = process.env.NEXT_PUBLIC_TWIPT_CONTRACT;
+
+    return {
+        props: {
+            twiptContract: twiptContract,
+        },
+    };
 };
 
 export default Profile;

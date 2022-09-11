@@ -1,18 +1,22 @@
-import { SessionProvider } from "next-auth/react";
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import {SessionProvider} from "next-auth/react";
+import {ChainId, ThirdwebProvider} from "@thirdweb-dev/react";
+import {MoralisProvider} from "react-moralis";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({Component, pageProps}) {
     const supportedChainIds = [80001, 5];
 
     return (
-        <ThirdwebProvider
-            supportedChainIds={supportedChainIds}
+        <MoralisProvider
+            serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER_URL}
+            appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}
         >
-            <SessionProvider session={pageProps.session}>
-                <Component {...pageProps} />
-            </SessionProvider>
-        </ThirdwebProvider>
+            <ThirdwebProvider supportedChainIds={supportedChainIds}>
+                <SessionProvider session={pageProps.session}>
+                    <Component {...pageProps} />
+                </SessionProvider>
+            </ThirdwebProvider>
+        </MoralisProvider>
     );
 }
 
