@@ -11,7 +11,7 @@ error Twipt__FailedToTransferEther();
 
 contract Twipt is Ownable {
     struct Creator {
-        string creatorWalletToFilecoinCid;
+        string filecoinCid;
         uint256 contributors;
         uint256 contributedAmount;
     }
@@ -28,7 +28,7 @@ contract Twipt is Ownable {
     fallback() external payable {}
 
     function addCreator(string memory _filecoinCid) external {
-        creators[msg.sender].creatorWalletToFilecoinCid = _filecoinCid;
+        creators[msg.sender].filecoinCid = _filecoinCid;
     }
 
     function oneTimeDonation(address _creator) external payable {
@@ -39,8 +39,12 @@ contract Twipt is Ownable {
         if (!success) revert Twipt__FailedToTransferEther();
     }
 
-    function getCreator(address _wallet) external view returns (Creator memory) {
-        return creators[_wallet];
+    function getCreatorInfo(address _wallet) external view returns (uint256 contributors, uint256 contributedAmountInUsd, string memory filecoinCid) {
+        Creator memory creator = creators[_wallet];
+
+        contributors = creator.contributors;
+        contributedAmountInUsd = ethAmountInUsd(creator.contributedAmount);
+        filecoinCid = creator.filecoinCid;
     }
 
     function usdAmountInEth(uint256 _usdAmount) public view returns (uint256 ethAmount) {
@@ -51,9 +55,5 @@ contract Twipt is Ownable {
     function ethAmountInUsd(uint256 _ethAmount) public view returns (uint256 usdAmount) {
         (, int256 price, , , ) = priceFeed.latestRoundData();
         usdAmount = (_ethAmount * uint256(price)) / 1 ether;
-    }
-
-    function _getNow() internal view returns (uint256) {
-        return block.timestamp;
     }
 }

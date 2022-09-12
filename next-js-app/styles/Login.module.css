@@ -38,3 +38,14 @@
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
 }
+
+.login_button {
+    border: 0.15rem #08aeea solid;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    background: #ffffff;
+    font-size: medium;
+    cursor: pointer;
+}

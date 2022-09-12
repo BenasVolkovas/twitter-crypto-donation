@@ -78,29 +78,22 @@
                 "type": "address"
             }
         ],
-        "name": "getCreator",
+        "name": "getCreatorInfo",
         "outputs": [
             {
-                "components": [
-                    {
-                        "internalType": "string",
-                        "name": "creatorWalletToFilecoinCid",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "contributors",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "contributedAmount",
-                        "type": "uint256"
-                    }
-                ],
-                "internalType": "struct Twipt.Creator",
-                "name": "",
-                "type": "tuple"
+                "internalType": "uint256",
+                "name": "contributors",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "contributedAmountInUsd",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "filecoinCid",
+                "type": "string"
             }
         ],
         "stateMutability": "view",

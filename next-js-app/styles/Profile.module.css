@@ -1,53 +1,75 @@
 .container {
-  padding: 5rem;
+    padding: 5rem;
 }
 
 .logout {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  border-radius: 1rem;
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: #ffffff;
-  font-size: small;
-  cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    border: 0.15rem #08aeea solid;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    font-size: small;
+    cursor: pointer;
 }
 
 .brand {
-  background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
-  background-clip: text;
-  display: inline-block;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+    background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+    background-clip: text;
+    display: inline-block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 .info {
-  text-decoration: underline;
-  text-decoration-color: #08aeea;
+    text-decoration: underline;
+    text-decoration-color: #08aeea;
 }
 
 .done_task {
-  border-radius: 1rem;
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: #2af598;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #2af598;
+    margin-right: 0.5rem;
 }
 
 .todo_task {
-  border-radius: 1rem;
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: #08aeea;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #08aeea;
+    margin-right: 0.5rem;
+}
+
+.new_section {
+    margin-top: 2rem;
+}
+
+.mini_section {
+    margin-top: 1rem;
 }
 
 .save_button {
-  border-radius: 1rem;
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
-  font-size: medium;
-  cursor: pointer;
+    border: 0.2rem #08aeea solid;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    background: #ffffff;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.data_input {
+    border: 0.1rem #000000 solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: medium;
+    display: block;
+    margin-top: 0.5rem;
 }
