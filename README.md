@@ -3,8 +3,7 @@
 -   [x] Twitter login
 -   [x] Twitter logout
 -   [x] Metamask login
--   [ ] Store Twitter user and Metamask wallet in database
--   [ ] Allow creator to withdraw the money from the smart contract
+-   [x] Store Twitter user and Metamask wallet in database
 
 ## Chrome Extension functionality:
 
@@ -15,11 +14,9 @@
 
 ## Smart contract functionality:
 
--   [ ] Donate once
--   [ ] Add subscription
--   [ ] Creator should be able to withdraw money
+-   [x] Donate once
 
 ## Tool usage:
 
--   [ ] Filecoin storage
+-   [x] Filecoin storage
 -   [ ] Chainlink price feeds

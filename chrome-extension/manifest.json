@@ -22,5 +22,11 @@
         "128": "/images/logo128.png"
     },
     "permissions": ["tabs", "storage", "identity"],
-    "host_permissions": ["https://api.twitter.com/*", "https://twitter.com/*"]
+    "host_permissions": ["https://api.twitter.com/*", "https://twitter.com/*"],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["/js/content.js"]
+        }
+    ]
 }

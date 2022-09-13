@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
-import {useNewMoralisObject, useMoralisQuery} from "react-moralis";
+import {useNewMoralisObject, useMoralisQuery, useMoralis} from "react-moralis";
 import styles from "../styles/Profile.module.css";
+import contractAbi from "../utils/Twipt.json";
 
 const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress}) => {
+    const {Moralis, isWeb3Enabled, enableWeb3} = useMoralis();
     const [isNewCreator, setIsNewCreator] = useState(true);
     const {save} = useNewMoralisObject("TwitterUsers");
     const {fetch: moralisFetch} = useMoralisQuery(
@@ -17,13 +19,30 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
             moralisFetch({
                 onSuccess: (user) => {
                     if (user.length === 1) {
-                        setIsNewCreator(false);
                         setAddress(user[0].attributes.metamaskWallet);
+                        getCreator(user[0].attributes.metamaskWallet);
+                        setIsNewCreator(false);
                     }
                 },
             });
         }
     }, [username]);
+
+    const getCreator = async (providedAddress) => {
+        console.log("isWeb3Enabled ", isWeb3Enabled);
+        if (!isWeb3Enabled) {
+            await enableWeb3();
+        }
+        const sendOptions = {
+            contractAddress: process.env.NEXT_PUBLIC_TWIPT_CONTRACT,
+            functionName: "getCreatorInfo",
+            abi: contractAbi,
+            params: {_wallet: providedAddress},
+        };
+        const creatorData = await Moralis.executeFunction(sendOptions);
+        console.log("creatorData ", creatorData);
+        setFilecoinCid(creatorData.filecoinCid);
+    };
 
     const saveUserObject = () => {
         if (username && address && filecoinData) {
@@ -66,8 +85,22 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
             .then((res) => res.json())
             .then((data) => {
                 setFilecoinCid(data.filecoinCid);
+                addNewCreator(data.filecoinCid);
                 setIsNewCreator(false);
             });
+    };
+
+    const addNewCreator = async (cid) => {
+        console.log("add creator");
+        const sendOptions = {
+            contractAddress: process.env.NEXT_PUBLIC_TWIPT_CONTRACT,
+            functionName: "addCreator",
+            abi: contractAbi,
+            params: {
+                _filecoinCid: cid,
+            },
+        };
+        await Moralis.executeFunction(sendOptions);
     };
 
     return (

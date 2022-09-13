@@ -2,20 +2,14 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {signOut, useSession, getSession} from "next-auth/react";
-import {
-    useAddress,
-    ConnectWallet,
-    Web3Button,
-    useContract,
-    useContractCall,
-    useContractData,
-} from "@thirdweb-dev/react";
+import {useMoralis} from "react-moralis";
 import styles from "../styles/Profile.module.css";
 import SaveButton from "../components/SaveButton";
 import MoreDetails from "../components/MoreDetails";
+import ConnectWallet from "../components/ConnectWallet";
 
-const Profile = (props) => {
-    const {contract} = useContract(props.twiptContract);
+const Profile = ({twiptContract}) => {
+    const {Moralis} = useMoralis();
     const [filecoinData, setFilecoinData] = useState({
         description: "",
         funFact: "",
@@ -27,7 +21,12 @@ const Profile = (props) => {
     const [twitterUsername, setTwitterUsername] = useState("");
     const router = useRouter();
     const {data} = useSession();
-    const address = useAddress();
+    const {authenticate, logout, isAuthenticated, enableWeb3, isWeb3Enabled, account} =
+        useMoralis();
+
+    useEffect(() => {
+        if (isWeb3Enabled) setWalletAddress(account);
+    }, [isWeb3Enabled]);
 
     useEffect(() => {
         if (data === null) {
@@ -47,18 +46,11 @@ const Profile = (props) => {
         }
     }, [data]);
 
-    useEffect(() => {
-        setWalletAddress(address);
-    }, [address]);
-
-    useEffect(() => {
-        if (filecoinCid) {
-            // TODO save to smart contract
-            console.log("add creator");
-            console.log("error: ", twiptContractError);
-            console.log("loading: ", twiptIsLoading);
+    const login = async () => {
+        if (!isWeb3Enabled) {
+            await enableWeb3();
         }
-    }, [filecoinCid]);
+    };
 
     return (
         <div className={styles.container}>
@@ -97,7 +89,7 @@ const Profile = (props) => {
                                 <div className={styles.todo_task}>To Do</div>
                                 Add Metamask wallet
                                 <div className={styles.mini_section}>
-                                    <ConnectWallet />
+                                    <ConnectWallet login={login} />
                                 </div>
                             </>
                         )}

@@ -12,7 +12,6 @@ const Login = () => {
         if (data || data === undefined) {
             router.push("/profile");
         }
-        console.log(data);
     }, [data]);
 
     return (
