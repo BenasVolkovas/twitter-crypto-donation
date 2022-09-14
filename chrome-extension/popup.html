@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="english">
+
+    <head>
+        <link rel="stylesheet" href="../css/styles.css">
+
+    </head>
+    <style>
+        .popup {
+            height: 30rem;
+            width: 30rem;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            margin: 0;
+            font-size: 4rem;
+            text-align: center;
+        }
+
+        .description {
+            margin: 4rem 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .brand {
+            background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+            background-clip: text;
+            display: inline-block;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+        }
+
+        .donate_button {
+            border: 0.2rem #000000 solid;
+            border-radius: 0.5rem;
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            background: #ffffff;
+            font-size: medium;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <body>
+        <div class="popup">
+            <h1 class="title">
+                Welcome to <span class="brand">Twipt</span>
+            </h1>
+
+            <p class="description" id="creator">Donate crypto for creators on Twitter at ease!</p>
+            <div id="donate">
+
+            </div>
+            <!-- <button class="donate_button">Donate</button> -->
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+
+</html>
