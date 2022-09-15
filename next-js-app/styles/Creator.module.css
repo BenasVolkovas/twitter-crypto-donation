@@ -1,0 +1,30 @@
+.container {
+    padding: 5rem;
+}
+
+.user_wallet {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    border: 0.2rem #2af598 solid;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    font-size: medium;
+}
+
+.brand {
+    background: linear-gradient(60deg, #08aeea 0%, #2af598 100%);
+    background-clip: text;
+    display: inline-block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.section {
+    margin-top: 0.5rem;
+    font-size: large;
+}

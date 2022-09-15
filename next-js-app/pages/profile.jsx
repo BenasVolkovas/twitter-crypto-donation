@@ -8,8 +8,7 @@ import SaveButton from "../components/SaveButton";
 import MoreDetails from "../components/MoreDetails";
 import ConnectWallet from "../components/ConnectWallet";
 
-const Profile = ({twiptContract}) => {
-    const {Moralis} = useMoralis();
+const Profile = () => {
     const [filecoinData, setFilecoinData] = useState({
         description: "",
         funFact: "",
@@ -21,8 +20,7 @@ const Profile = ({twiptContract}) => {
     const [twitterUsername, setTwitterUsername] = useState("");
     const router = useRouter();
     const {data} = useSession();
-    const {authenticate, logout, isAuthenticated, enableWeb3, isWeb3Enabled, account} =
-        useMoralis();
+    const {enableWeb3, isWeb3Enabled, account} = useMoralis();
 
     useEffect(() => {
         if (isWeb3Enabled) setWalletAddress(account);
@@ -129,16 +127,6 @@ const Profile = ({twiptContract}) => {
             )}
         </div>
     );
-};
-
-export const getServerSideProps = async () => {
-    const twiptContract = process.env.NEXT_PUBLIC_TWIPT_CONTRACT;
-
-    return {
-        props: {
-            twiptContract: twiptContract,
-        },
-    };
 };
 
 export default Profile;

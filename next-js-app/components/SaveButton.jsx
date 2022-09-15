@@ -29,7 +29,6 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
     }, [username]);
 
     const getCreator = async (providedAddress) => {
-        console.log("isWeb3Enabled ", isWeb3Enabled);
         if (!isWeb3Enabled) {
             await enableWeb3();
         }
@@ -75,7 +74,7 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
     };
 
     const storeFilecoinData = () => {
-        fetch("api/store-on-filecoin", {
+        fetch(`${process.env.NEXT_PUBLIC_DAPP_DOMAIN}/api/store-on-filecoin`, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -91,7 +90,9 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
     };
 
     const addNewCreator = async (cid) => {
-        console.log("add creator");
+        if (!isWeb3Enabled) {
+            await enableWeb3();
+        }
         const sendOptions = {
             contractAddress: process.env.NEXT_PUBLIC_TWIPT_CONTRACT,
             functionName: "addCreator",
