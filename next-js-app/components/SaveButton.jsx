@@ -15,10 +15,12 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
     );
 
     useEffect(() => {
-        if (username) {
+        console.log("enabled: ", isWeb3Enabled);
+        if (username && isWeb3Enabled) {
             moralisFetch({
                 onSuccess: (user) => {
-                    if (user.length === 1) {
+                    console.log(user[0].attributes.metamaskWallet);
+                    if (user.length === 1 && setIsNewCreator) {
                         setAddress(user[0].attributes.metamaskWallet);
                         getCreator(user[0].attributes.metamaskWallet);
                         setIsNewCreator(false);
@@ -26,12 +28,11 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
                 },
             });
         }
-    }, [username]);
+    }, [username, isWeb3Enabled]);
 
     const getCreator = async (providedAddress) => {
-        if (!isWeb3Enabled) {
-            await enableWeb3();
-        }
+        console.log("address ", providedAddress);
+
         const sendOptions = {
             contractAddress: process.env.NEXT_PUBLIC_TWIPT_CONTRACT,
             functionName: "getCreatorInfo",
@@ -83,10 +84,12 @@ const SaveButton = ({username, address, filecoinData, setFilecoinCid, setAddress
         })
             .then((res) => res.json())
             .then((data) => {
+                console.log("Filecoin data: ", data);
                 setFilecoinCid(data.filecoinCid);
                 addNewCreator(data.filecoinCid);
                 setIsNewCreator(false);
-            });
+            })
+            .catch((e) => alert(e));
     };
 
     const addNewCreator = async (cid) => {

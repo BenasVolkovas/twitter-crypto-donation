@@ -28,3 +28,28 @@
     margin-top: 0.5rem;
     font-size: large;
 }
+
+.data_input {
+    border: 0.1rem #000000 solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: medium;
+    display: block;
+    margin-top: 0.5rem;
+    width: 20rem;
+}
+
+.form {
+    margin-top: 4rem;
+}
+
+.donate_btn {
+    margin-top: 2rem;
+    border: 0.2rem #08aeea solid;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    font-size: medium;
+    cursor: pointer;
+}

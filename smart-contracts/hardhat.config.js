@@ -26,11 +26,13 @@ module.exports = {
             url: GOERLI_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 5,
+            allowUnlimitedContractSize: true
         },
         mumbai: {
             url: MUMBAI_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 80001,
+            allowUnlimitedContractSize: true
         },
     },
     etherscan: {
@@ -54,4 +56,5 @@ module.exports = {
         spacing: 4,
         pretty: false,
     },
+    
 };

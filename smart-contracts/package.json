@@ -30,6 +30,7 @@
   },
   "scripts": {
     "prettier": "prettier --write contracts/*.sol",
-    "deploy:goerli": "yarn hardhat run scripts/deploy.js --network goerli"
+    "deploy:goerli": "yarn hardhat run scripts/deploy.js --network goerli",
+    "deploy:mumbai": "yarn hardhat run scripts/deploy.js --network mumbai"
   }
 }

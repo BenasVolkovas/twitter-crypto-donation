@@ -54,6 +54,35 @@
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "creators",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "filecoinCid",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "contributors",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "contributedAmount",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "_ethAmount",
                 "type": "uint256"
@@ -82,18 +111,31 @@
         "outputs": [
             {
                 "internalType": "uint256",
-                "name": "contributors",
+                "name": "",
                 "type": "uint256"
             },
             {
                 "internalType": "uint256",
-                "name": "contributedAmountInUsd",
+                "name": "",
                 "type": "uint256"
             },
             {
                 "internalType": "string",
-                "name": "filecoinCid",
+                "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getPrice",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "realPrice",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",

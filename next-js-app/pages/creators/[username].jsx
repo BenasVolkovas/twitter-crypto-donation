@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useEffect, useMemo} from "react";
 import {useMoralis, useMoralisQuery} from "react-moralis";
 import Head from "next/head";
 import styles from "../../styles/Creator.module.css";
@@ -6,22 +6,32 @@ import {useRouter} from "next/router";
 
 import CreatorDetails from "../../components/CreatorDetails";
 import UserWallet from "../../components/UserWallet";
-import DonateAction from "../../components/DonateAction";
 
 const Creator = () => {
     const router = useRouter();
     const {username} = router.query;
-    const {isWeb3Enabled, enableWeb3, isInitialized} = useMoralis();
+    const {isWeb3Enabled, enableWeb3, isInitialized, Moralis} = useMoralis();
 
     useEffect(() => {
         const login = async () => {
-            if (!isWeb3Enabled) {
-                await enableWeb3();
-            }
+            await enableWeb3();
         };
 
         login();
     }, []);
+
+    useEffect(() => {
+        const checkChainId = async () => {
+            const chainId = await Moralis.getChainId();
+            if (parseInt(chainId, 16) !== 80001) {
+                alert("Choose Mumbai network to continue!");
+            }
+        };
+
+        if (isWeb3Enabled) {
+            checkChainId();
+        }
+    }, [isWeb3Enabled]);
 
     return (
         <div className={styles.container}>
@@ -33,7 +43,6 @@ const Creator = () => {
             <div>
                 <UserWallet />
                 {isInitialized && <CreatorDetails />}
-                <DonateAction />
             </div>
         </div>
     );

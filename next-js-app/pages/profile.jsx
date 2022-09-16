@@ -44,6 +44,10 @@ const Profile = () => {
         }
     }, [data]);
 
+    useEffect(() => {
+        login();
+    }, []);
+
     const login = async () => {
         if (!isWeb3Enabled) {
             await enableWeb3();
