@@ -7,10 +7,9 @@
 
 ## Chrome Extension functionality:
 
--   [ ] Add **Donate** button to Twitter DOM
--   [ ] On button click display 2 options to donate once or make subscription.
--   [ ] After user chooses the method, display the form.
--   [ ] Send the data to the smart contract
+-   [x] Add **Donate** button to Twitter
+-   [x] After user chooses the method, display the form.
+-   [x] Send the data to the smart contract
 
 ## Smart contract functionality:
 
@@ -19,4 +18,4 @@
 ## Tool usage:
 
 -   [x] Filecoin storage
--   [ ] Chainlink price feeds
+-   [x] Chainlink price feeds
