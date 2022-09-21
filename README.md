@@ -31,6 +31,7 @@ Twipt is currently totally free, which means followers will only need to pay for
 
 # Current state (features already added)
 ## Next.js app
+
 -   [x] Twitter login
 -   [x] Twitter logout
 -   [x] Metamask login
@@ -41,15 +42,17 @@ Twipt is currently totally free, which means followers will only need to pay for
 -   [x] Retrieve data from Filecoin
 -   [x] Donate form for followers
   
-## Chrome Extension functionality: 
+## Chrome Extension
+
 -   [x] **Donate** button for creators on Twipt
 
-## Smart contract functionality:
+## Smart contract
+
 -   [x] Add new creator with Filecoin cid
 -   [x] Donate to creator
 -   [x] Get details about creator (convert MATIC value to USD)
   
-## Tool usage:
+## Tool usage
 -   [x] Polygon testnet Mumbai
 -   [x] Filecoin storage (Web3.storage)
 -   [x] Chainlink price feeds (MATIC/USD)
