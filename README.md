@@ -31,15 +31,15 @@ Twipt is currently totally free, which means followers will only need to pay for
 
 # Current state (features already added)
 ## Next.js app
--   [x] Twitter login 
--   [x] Twitter logout 
+-   [x] Twitter login
+-   [x] Twitter logout
 -   [x] Metamask login
 -   [x] Store Twitter username and Metamask wallet address in Moralis database
 -   [x] Save Filecoin cid and creator details in Twipt smart contract
 -   [x] Store details of creator on Filecoin
 -   [x] Retrieve data from Twipt smart contract
 -   [x] Retrieve data from Filecoin
--   [x] Donate form for followers.
+-   [x] Donate form for followers
   
 ## Chrome Extension functionality: 
 -   [x] **Donate** button for creators on Twipt
