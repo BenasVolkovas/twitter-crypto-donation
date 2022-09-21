@@ -44,11 +44,11 @@ Twipt is currently totally free, which means followers will only need to pay for
   
 ## Chrome Extension
 
--   [x] **Donate** button for creators on Twipt
+-   [x] **Donate** button for creators on Twipt
 
 ## Smart contract
 
--   [x] Add new creator with Filecoin cid
+-   [x] Add new creator with Filecoin cid
 -   [x] Donate to creator
 -   [x] Get details about creator (convert MATIC value to USD)
   
