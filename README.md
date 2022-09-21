@@ -1,6 +1,6 @@
 # Twipt
 
-![Logo image](https://raw.githubusercontent.com/BenasVolkovas/twitter-crypto-donation-monorepo/master/chrome-extension/images/logo64.png)
+[![logo128.png](https://i.postimg.cc/c40yHBCM/logo128.png)](https://postimg.cc/XXHD1Fwp)
 
 ## Donate crypto for creators on Twitter at ease!
 
@@ -33,7 +33,8 @@ Twipt is currently totally free, which means followers will only need to pay for
 ## Next.js app
 -   [x] Twitter login 
 -   [x] Twitter logout 
--   [x] Metamask login -   [x] Store Twitter username and Metamask wallet address in Moralis database
+-   [x] Metamask login
+-   [x] Store Twitter username and Metamask wallet address in Moralis database
 -   [x] Save Filecoin cid and creator details in Twipt smart contract
 -   [x] Store details of creator on Filecoin
 -   [x] Retrieve data from Twipt smart contract
