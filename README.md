@@ -42,20 +42,20 @@ Twipt is currently totally free, which means followers will only need to pay for
 -   [x] Retrieve data from Filecoin
 -   [x] Donate form for followers
   
-## Chrome Extension
+## Chrome Extension
 
 -   [x] **Donate** button for creators on Twipt
 
-## Smart contract
+## Smart contract
 
 -   [x] Add new creator with Filecoin cid
 -   [x] Donate to creator
 -   [x] Get details about creator (convert MATIC value to USD)
   
-## Tool usage
+## Tool usage
 -   [x] Polygon testnet Mumbai
--   [x] Filecoin storage (Web3.storage)
--   [x] Chainlink price feeds (MATIC/USD)
+-   [x] Filecoin storage (Web3.storage)
+-   [x] Chainlink price feeds (MATIC/USD)
 -   [x] Moralis database
 -   [x] Twitter authentication
 
